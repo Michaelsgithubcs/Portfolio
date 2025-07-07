@@ -268,9 +268,11 @@ section {
 }
 
 .about-containers {
+  display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
+  max-width: 100%;
 }
 
 .about-details-container {
@@ -429,4 +431,70 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+/* Optionally, center the single card row */
+.about-containers:only-child, .about-containers:has(.details-container:only-child) {
+  justify-content: center;
+}
+
+/* Certificate list link styling and bounce animation */
+.cert-list a {
+  color: #0074d9;
+  text-decoration: underline;
+  animation: cert-bounce 1s infinite;
+  display: inline-block;
+}
+
+@keyframes cert-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-8px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+}
+
+.cert-list li {
+  color: rgb(85, 85, 85);
+}
+
+.details-container a[href*="credly.com"] {
+  color: #0074d9;
+  text-decoration: underline;
+  animation: cert-bounce 1s infinite;
+  display: inline-block;
+}
+
+@keyframes cert-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-8px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
 }
