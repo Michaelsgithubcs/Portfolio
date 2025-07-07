@@ -498,3 +498,15 @@ footer p {
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 }
+
+@media (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
