@@ -8,15 +8,15 @@ Feel free to explore my projects, view screenshots, and check out the technologi
 
 ---
 
-## How to Run / View
+##  How to Run / View
 
 1. **Clone the repository**
    
- git clone https://github.com/YourUsername/your-portfolio-repo.git
+ 		git clone https://github.com/YourUsername/your-portfolio-repo.git
 
 2.	Navigate to the project folder
 
-cd Portfolio
+		cd Portfolio
 
 3.	Open the portfolio
 
@@ -35,22 +35,23 @@ cd Portfolio
 ⸻
 
 ## Technical Skills & Experience
-	•	HTML, CSS, JavaScript, Java, Python, Kotlin, C++, C, MySQL, PL/SQL
+
+•	HTML, CSS, JavaScript, Java, Python, Kotlin, C++, C, MySQL, PL/SQL
 
 ⸻
 
-Additional Expertise
-	•	Software Development
-	•	Data Analysis
-	•	Cyber Security
-	•	Cyber Threat Management
-	•	Ethical Hacking
-	•	Network Defence
-	•	And many more…
+## Additional Expertise
+•	Software Development
+•	Data Analysis
+•	Cyber Security
+•	Cyber Threat Management
+•	Ethical Hacking
+•	Network Defence
+•	And many more…
 
 ⸻
 
-Contact
+## Contact
 
 Feel free to reach out via email or connect on LinkedIn.
 
@@ -58,4 +59,4 @@ Feel free to reach out via email or connect on LinkedIn.
 
 Thank you for visiting my portfolio!
 
-Just replace the placeholders like `YourUsername`, `your-portfolio-repo`, email, LinkedIn URL, and add your screenshots folder accordingly. Let me know if you want me to do that for you!
+
