@@ -12,20 +12,20 @@ Feel free to explore my projects, view screenshots, and check out the technologi
 
 1. **Clone the repository**
    
-git clone https://github.com/YourUsername/your-portfolio-repo.git
+ git clone https://github.com/YourUsername/your-portfolio-repo.git
 
 2.	Navigate to the project folder
 
-cd your-portfolio-repo
+cd Portfolio
 
 3.	Open the portfolio
 
 	•	Open the index.html file in your preferred web browser to view the portfolio locally.
-	•	Alternatively, you can deploy this on GitHub Pages or any static site hosting service for easy online access.
+	•	Alternatively, use this link to view: https://michaelndlovu.netlify.app
 
 ⸻
 
-Screenshots
+## Screenshots
 
 <img width="1470" alt="Screenshot 2025-07-08 at 09 40 15" src="https://github.com/user-attachments/assets/6586c1ed-d029-45dc-89f5-ce1acbe7eb4f" />
 <img width="1470" alt="Screenshot 2025-07-08 at 09 40 36" src="https://github.com/user-attachments/assets/af5e4741-2be4-4c2d-833d-d46941295afa" />
@@ -34,7 +34,7 @@ Screenshots
 
 ⸻
 
-Technical Skills & Experience
+## Technical Skills & Experience
 	•	HTML, CSS, JavaScript, Java, Python, Kotlin, C++, C, MySQL, PL/SQL
 
 ⸻
