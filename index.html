@@ -9,118 +9,86 @@
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
-    <nav id="desktop-nav">
-      <div class="logo">Mike Ndlovu</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Miike Ndlovu</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
+    <!-- Fixed Header Navigation Start -->
+    <header id="main-header" class="main-header">
+      <div class="header-container">
+        <div class="logo">Mike Ndlovu</div>
+        <nav class="nav-menu">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger" id="hamburger-menu" aria-label="Open menu" tabindex="0">
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
       </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.png" alt="Mike Ndlovu profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Mike Ndlovu</h1>
-        <p class="section__text__p2">Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/Mike CV.pdf')">
-            Download CV
-          </button>
-          <button 
-            class="btn btn-color-1" 
-            onclick="location.href='./#contact'">
-            Contact Info
-          </button>
+    </header>
+    <!-- Fixed Header Navigation End -->
+    <!-- Hero Section Start -->
+    <section id="hero" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-left">
+          <div class="hero-img-wrapper">
+            <div class="decorative-circles">
+              <span class="circle circle1"></span>
+              <span class="circle circle2"></span>
+              <span class="circle circle3"></span>
+            </div>
+            <img src="./assets/profile-pic.png" alt="Mike Ndlovu profile picture" class="hero-img" />
+          </div>
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/michael-ndlovu-23246b2b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/Michaelsgithubcs'"
-          />
+        <div class="hero-right">
+          <p class="hero-intro">Hello, I'm</p>
+          <h1 class="hero-name">Mike Ndlovu</h1>
+          <p class="hero-role">Full Stack Developer</p>
+          <div class="hero-btns">
+            <button class="btn btn-color-2" onclick="window.open('./assets/Mike CV.pdf')">Download CV</button>
+            <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
+          </div>
+          <div class="hero-socials">
+            <a href="https://www.linkedin.com/in/michael-ndlovu-23246b2b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" aria-label="LinkedIn">
+              <img src="./assets/linkedin.png" alt="LinkedIn" class="hero-social-icon" />
+            </a>
+            <a href="https://github.com/Michaelsgithubcs" target="_blank" aria-label="GitHub">
+              <img src="./assets/github.png" alt="GitHub" class="hero-social-icon" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
-    <section id="about">
+    <!-- Hero Section End -->
+    <section id="about" class="about-section">
       <p class="section__text__p1">Get To Know More</p>
       <h1 class="title">About Me</h1>
-      
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/institution.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Institution</h3>
-              <p>• Tshwane University of Technology</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/qualification.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Qualifications</h3>
-              <p>• National Diploma in Computer Science</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/certificate.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Certificates (20+)</h3>
-              <p>• Cisco: Introduction to cyber security</p>
-              <p>• IBM: Python 101 for Data Science</p>
-              <p>• Cisco: JavaScript Essentials 1</p>
-              <p>• Cisco: C++ Essentials 1</p>
-              <p>• Cisco: Computer Hardware Basics</p>
-              <p>• Cisco: Ethical Hacker</p>
-              <p>• Cisco: Cyber Threat Management</p>
-              <p>• Cisco: Network Defense</p>
-              <p>• Cisco: Data Analytics Essentials</p>
-              <p>• Cisco: Network Support and Security</p>
-              <p><a href="https://www.credly.com/users/michaelndlovucerts" target="_blank">Click here to view all my certificates</a></p>
-            </div>
-          </div>
-          <div class="text-container">
-          </div>
-          <div class="text-container">
-            
-          </div>
+      <div class="about-cards-container">
+        <div class="about-card">
+          <img src="assets/institution.png" alt="Institution icon" class="about-icon" />
+          <h3>Institution</h3>
+          <p>Tshwane University of Technology</p>
+        </div>
+        <div class="about-card">
+          <img src="assets/qualification.png" alt="Qualification icon" class="about-icon" />
+          <h3>Qualifications</h3>
+          <p>National Diploma in Computer Science</p>
+        </div>
+        <div class="about-card">
+          <img src="assets/certificate.png" alt="Certificate icon" class="about-icon" />
+          <h3>Certificates (20+)</h3>
+          <ul class="cert-list">
+            <li>Cisco: Introduction to Cyber Security</li>
+            <li>IBM: Python 101 for Data Science</li>
+            <li>Cisco: JavaScript Essentials 1</li>
+            <li>Cisco: C++ Essentials 1</li>
+            <li>Cisco: Computer Hardware Basics</li>
+            <li>And many more...</li>
+          </ul>
+          <a href="https://www.credly.com/users/michaelndlovucerts" target="_blank" class="cert-link">View all certificates &rarr;</a>
         </div>
       </div>
       <img
@@ -130,100 +98,103 @@
         onclick="location.href='./#experience'"
       />
     </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Technical Skills</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <!--<h2 class="experience-sub-title">Frontend Development</h2>-->
-            <div class="article-container skills-grid">
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>HTML</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>CSS</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>JavaScript</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Java</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Python</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Kotlin</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>C++</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>C</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>MySQL</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>PL/SQL</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Software Development</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Data Analysis</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Cyber Security</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Cyber Threat Management</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Ethical Hacking</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>Network Defence</h3></div>
-              </article>
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div><h3>And many more...</h3></div>
-              </article>
-              
-            </div>
-          </div><br>
+    <!-- Skills Section Start -->
+    <section id="skills" class="skills-section">
+      <div class="skills-header">
+        <span class="skills-title-small">Explore My</span>
+        <h2 class="skills-title-large">Technical Skills</h2>
+      </div>
+      <div class="skills-card-container">
+        <div class="skills-grid">
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">HTML</span><div class="progress-bar"><div class="progress-fill" style="width: 95%" data-percentage="95"></div></div><span class="skill-percentage">95%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">CSS</span><div class="progress-bar"><div class="progress-fill" style="width: 90%" data-percentage="90"></div></div><span class="skill-percentage">90%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">JavaScript</span><div class="progress-bar"><div class="progress-fill" style="width: 88%" data-percentage="88"></div></div><span class="skill-percentage">88%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Java</span><div class="progress-bar"><div class="progress-fill" style="width: 85%" data-percentage="85"></div></div><span class="skill-percentage">85%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Python</span><div class="progress-bar"><div class="progress-fill" style="width: 80%" data-percentage="80"></div></div><span class="skill-percentage">80%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Kotlin</span><div class="progress-bar"><div class="progress-fill" style="width: 75%" data-percentage="75"></div></div><span class="skill-percentage">75%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">C++</span><div class="progress-bar"><div class="progress-fill" style="width: 82%" data-percentage="82"></div></div><span class="skill-percentage">82%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">C</span><div class="progress-bar"><div class="progress-fill" style="width: 78%" data-percentage="78"></div></div><span class="skill-percentage">78%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">MySQL</span><div class="progress-bar"><div class="progress-fill" style="width: 85%" data-percentage="85"></div></div><span class="skill-percentage">85%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">PL/SQL</span><div class="progress-bar"><div class="progress-fill" style="width: 80%" data-percentage="80"></div></div><span class="skill-percentage">80%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Software Development</span><div class="progress-bar"><div class="progress-fill" style="width: 90%" data-percentage="90"></div></div><span class="skill-percentage">90%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Data Analysis</span><div class="progress-bar"><div class="progress-fill" style="width: 85%" data-percentage="85"></div></div><span class="skill-percentage">85%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Cyber Security</span><div class="progress-bar"><div class="progress-fill" style="width: 88%" data-percentage="88"></div></div><span class="skill-percentage">88%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Cyber Threat Management</span><div class="progress-bar"><div class="progress-fill" style="width: 85%" data-percentage="85"></div></div><span class="skill-percentage">85%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Ethical Hacking</span><div class="progress-bar"><div class="progress-fill" style="width: 82%" data-percentage="82"></div></div><span class="skill-percentage">82%</span></div>
+          <div><span class="skill-checkmark">✓</span><span class="skill-name">Network Defence</span><div class="progress-bar"><div class="progress-fill" style="width: 80%" data-percentage="80"></div></div><span class="skill-percentage">80%</span></div>
         </div>
       </div>
-      <!-- Experience in my CV heading below skills, above projects -->
-      <div class="experience-cv-heading" style="text-align:center; margin: 2rem 0 1rem 0; font-weight: bold;">
-        <hr style="margin-bottom: 1rem;">
-        <h3>Experience in my CV</h3><br>
-        <hr style="margin-bottom: 1rem;">
-      </div>
+      <section id="experience" class="section-padding bg-background">
+        <div class="container-custom">
+          <div class="skills-header" style="margin-bottom:2.5rem;">
+            <span class="skills-title-small text-primary">Explore My</span>
+            <h2 class="skills-title-large">Experience</h2>
+          </div>
+          <div class="about-cards-container" style="gap:2rem;">
+            <!-- Experience Card 1 -->
+            <div class="about-card" style="min-width:320px;max-width:500px;">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="text-primary p-3 bg-primary/10 rounded-full flex items-center justify-center" style="width:48px;height:48px;">
+                  <!-- Briefcase icon (lucide-react) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3v4M8 3v4m-6 8h20"/></svg>
+                </div>
+                <div class="flex-1">
+                  <div style="font-size:1.5rem;font-weight:700;color:#222;">Software Developer</div>
+                  <div style="font-size:1.15rem;font-weight:600;color:#222;">HiTeknologySolutions</div>
+                  <div class="flex items-center text-muted-foreground text-sm mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" style="margin-right:6px;"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4m-6 4h20"/></svg>
+                    July 2024 - Present
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-card-foreground mb-3">Key Responsibilities:</div>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Developing and maintaining web applications using modern frameworks</span></li>
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Collaborating with cross-functional teams to deliver quality software solutions</span></li>
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Implementing responsive user interfaces and optimizing application performance</span></li>
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Participating in code reviews and following best development practices</span></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Experience Card 2 -->
+            <div class="about-card" style="min-width:320px;max-width:500px;">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="text-primary p-3 bg-primary/10 rounded-full flex items-center justify-center" style="width:48px;height:48px;">
+                  <!-- Briefcase icon (lucide-react) -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 3v4M8 3v4m-6 8h20"/></svg>
+                </div>
+                <div class="flex-1">
+                  <div style="font-size:1.5rem;font-weight:700;color:#222;">Software Developer Trainee</div>
+                  <div style="font-size:1.15rem;font-weight:600;color:#222;">mLab</div>
+                  <div class="flex items-center text-muted-foreground text-sm mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" style="margin-right:6px;"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4m-6 4h20"/></svg>
+                    June 2024 - Present
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-card-foreground mb-3">Key Responsibilities:</div>
+                <ul class="space-y-3">
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Learning advanced software development methodologies and practices</span></li>
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Building projects using various programming languages and frameworks</span></li>
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Participating in training sessions and workshops on emerging technologies</span></li>
+                  <li class="flex items-start gap-3"><span class="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span><span class="text-muted-foreground text-sm leading-relaxed">Contributing to team projects and gaining hands-on development experience</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
-    <section id="projects">
+    <!-- Skills Section End -->
+    
+    <section id="projects" class="projects-section">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
       <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
+        <div class="about-cards-container">
+          <div class="about-card color-container">
             <div class="article-container">
               <img
                 src="./assets/logo.png"
@@ -234,15 +205,17 @@
             <h2 class="experience-sub-title project-title">My Virtual Closet</h2>
             <p>My VirtualCloset is an Android app that helps users manage their wardrobe digitally, allowing them to add, organize, favorite, and try on clothing items virtually.</p>
             <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/Michaelsgithubcs/My-Virtuat-Closet-App'"
-              >
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Michaelsgithubcs/My-Virtuat-Closet-App'">
                 Github
+              </button>
+              <button class="btn btn-color-1 project-btn" onclick="location.href='https://github.com/Michaelsgithubcs/My-Virtuat-Closet-App'">
+                <span style="display:inline-flex;align-items:center;gap:0.4em;">Live Demo
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
               </button>
             </div>
           </div>
-          <div class="details-container color-container">
+          <div class="about-card color-container">
             <div class="article-container">
               <img
                 src="./assets/Funa.png"
@@ -253,21 +226,17 @@
             <h2 class="experience-sub-title project-title">Home Decor Site</h2>
             <p>This is a website made for a home decorator to showcase their talent as well as their gallery. It includes every work they have done and their profile.</p>
             <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/Michaelsgithubcs/Home-Decor-Site'"
-              >
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Michaelsgithubcs/Home-Decor-Site'">
                 Github
               </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://homedecorsitebyalimike.netlify.app/'"
-              >
-                Live Demo
+              <button class="btn btn-color-1 project-btn" onclick="location.href='https://homedecorsitebyalimike.netlify.app/'">
+                <span style="display:inline-flex;align-items:center;gap:0.4em;">Live Demo
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
               </button>
             </div>
           </div>
-          <div class="details-container color-container">
+          <div class="about-card color-container">
             <div class="article-container">
               <img
                 src="./assets/Project-3.png"
@@ -278,23 +247,19 @@
             <h2 class="experience-sub-title project-title">Creatives Site</h2>
             <p>This is a website made for online creatives helping them with marketing. This was done for an Instagram company and is a very beautiful website.</p>
             <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/Michaelsgithubcs/artistssite'"
-              >
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Michaelsgithubcs/artistssite'">
                 Github
               </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://effulgent-syrniki-b47405.netlify.app/'"
-              >
-                Live Demo
+              <button class="btn btn-color-1 project-btn" onclick="location.href='https://effulgent-syrniki-b47405.netlify.app/'">
+                <span style="display:inline-flex;align-items:center;gap:0.4em;">Live Demo
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
               </button>
             </div>
           </div>
         </div>
-        <div class="about-containers">
-          <div class="details-container color-container">
+        <div class="about-cards-container">
+          <div class="about-card color-container">
             <div class="article-container">
               <img
                 src="./assets/khanyisa-verification-logo.jpeg"
@@ -305,21 +270,17 @@
             <h2 class="experience-sub-title project-title">Khanyisa Web Shine</h2>
             <p>Khanyisa Web Shine is a modern web project built with Vite, TypeScript, React, shadcn-ui, and Tailwind CSS. Explore the live demo or view the code on GitHub.</p>
             <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/Michaelsgithubcs/khanyisa-web-shine'"
-              >
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Michaelsgithubcs/khanyisa-web-shine'">
                 Github
               </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://khanyisa-web-shine-design.vercel.app'"
-              >
-                Live Demo
+              <button class="btn btn-color-1 project-btn" onclick="location.href='https://khanyisa-web-shine-design.vercel.app'">
+                <span style="display:inline-flex;align-items:center;gap:0.4em;">Live Demo
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
               </button>
             </div>
           </div>
-          <div class="details-container color-container">
+          <div class="about-card color-container">
             <div class="article-container">
               <img
                 src="./assets/placeholder.png"
@@ -331,10 +292,14 @@
             <p>Description for the first placeholder project. Update this with your project details.</p>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" disabled>Github</button>
-              <button class="btn btn-color-2 project-btn" disabled>Live Demo</button>
+              <button class="btn btn-color-1 project-btn" disabled>
+                <span style="display:inline-flex;align-items:center;gap:0.4em;">Live Demo
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
+              </button>
             </div>
           </div>
-          <div class="details-container color-container">
+          <div class="about-card color-container">
             <div class="article-container">
               <img
                 src="./assets/placeholder.png"
@@ -346,7 +311,11 @@
             <p>Description for the second placeholder project. Update this with your project details.</p>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" disabled>Github</button>
-              <button class="btn btn-color-2 project-btn" disabled>Live Demo</button>
+              <button class="btn btn-color-1 project-btn" disabled>
+                <span style="display:inline-flex;align-items:center;gap:0.4em;">Live Demo
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -359,24 +328,14 @@
       /> 
     </section>
     <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:mikendlovumx@gmail.com">mikendlovumx@gmail.com</a></p>
+      <div class="about-cards-container" style="max-width: 420px; margin: 2.5rem auto; gap: 1.5rem;">
+        <div class="about-card" style="width:100%;align-items:center;justify-content:center;display:flex;">
+          <img src="./assets/email.png" alt="Email icon" class="contact-icon" style="width:2.2rem;height:2.2rem;margin-right:1rem;" />
+          <span style="font-size:1.1rem;color:#222;">mikendlovumx@gmail.com</span>
         </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/michael-ndlovu-23246b2b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">LinkedIn</a></p>
+        <div class="about-card" style="width:100%;align-items:center;justify-content:center;display:flex;">
+          <img src="./assets/linkedin.png" alt="LinkedIn icon" class="contact-icon" style="width:2.2rem;height:2.2rem;margin-right:1rem;" />
+          <a href="https://www.linkedin.com/in/michael-ndlovu-23246b2b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" style="font-size:1.1rem;color:#111;text-decoration:underline;">LinkedIn</a>
         </div>
       </div>
     </section>
@@ -385,6 +344,7 @@
         <div class="nav-links-container">
           <ul class="nav-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
