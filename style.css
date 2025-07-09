@@ -11,10 +11,12 @@ body {
   font-family: "Poppins", sans-serif;
   padding-top: 4rem;
   background: linear-gradient(135deg, #fff 0%, #f6f7fa 100%);
+  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 p {
@@ -903,6 +905,9 @@ footer p {
 }
 
 @media (max-width: 900px) {
+  .hamburger {
+    display: flex !important;
+  }
   .nav-links {
     display: none;
     position: absolute;
@@ -921,8 +926,48 @@ footer p {
   .nav-links.open {
     display: flex;
   }
-  .hamburger {
-    display: flex;
+}
+
+@media (max-width: 900px) {
+  .hero-section,
+  .hero-container,
+  .hero-left,
+  .hero-right,
+  .about-section,
+  .about-cards-container,
+  .about-card,
+  .projects-section,
+  #projects .about-cards-container,
+  #projects .about-card {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .about-cards-container {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 1.2rem !important;
+  }
+  .about-card,
+  #projects .about-card {
+    width: 100% !important;
+    max-width: 420px !important;
+    margin: 0 auto 1.2rem auto !important;
+  }
+  .project-img {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    margin: 0 auto 1rem auto !important;
+    display: block !important;
   }
 }
 
@@ -1262,5 +1307,77 @@ footer p {
   #contact .about-cards-container {
     flex-direction: column;
     gap: 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  #about .about-cards-container,
+  #projects .about-cards-container,
+  #contact .about-cards-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    gap: 1rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #about .about-card,
+  #projects .about-card,
+  #contact .about-card {
+    width: 100% !important;
+    max-width: 350px !important;
+    margin: 0 auto 1rem auto !important;
+    box-sizing: border-box !important;
+  }
+  #contact .about-cards-container {
+    max-width: 350px !important;
+    gap: 1rem !important;
+  }
+  footer .nav-links {
+    flex-direction: row !important;
+    gap: 1.2rem !important;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  .main-header .hamburger {
+    display: flex !important;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    z-index: 1100;
+  }
+  #contact .about-card {
+    width: 90% !important;
+    max-width: 220px !important;
+    margin: 0 auto 0.7rem auto !important;
+    box-sizing: border-box !important;
+  }
+  .contact-footer-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 1.2rem auto 0 auto;
+    width: 100%;
+  }
+  .contact-footer-nav a {
+    color: #222;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .contact-footer-nav a:hover {
+    background: #f1f3f6;
+    color: #007bff;
   }
 }
