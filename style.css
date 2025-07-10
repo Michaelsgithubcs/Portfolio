@@ -566,6 +566,22 @@ footer .nav-links {
   border-radius: 6px 0 0 6px;
   width: 0;
   transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Fallback for when JavaScript doesn't load - show progress bars after 3 seconds */
+@media (prefers-reduced-motion: no-preference) {
+  .progress-fill {
+    animation: fallback-progress 3s ease-in-out forwards;
+    animation-delay: 3s;
+  }
+}
+
+@keyframes fallback-progress {
+  to {
+    width: var(--fallback-width, 0%);
+  }
 }
 
 .skill-percentage {
@@ -625,6 +641,12 @@ footer .nav-links {
   }
   .skills-title-large {
     font-size: 2rem;
+  }
+  .progress-bar {
+    height: 12px; /* Slightly taller on mobile for better visibility */
+  }
+  .progress-fill {
+    transition: width 1.5s cubic-bezier(0.4,0,0.2,1); /* Slightly slower animation on mobile */
   }
 }
 

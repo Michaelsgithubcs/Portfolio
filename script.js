@@ -19,22 +19,45 @@ function animateSkillsProgress() {
   function animate() {
     progressFills.forEach(fill => {
       const percentage = fill.getAttribute('data-percentage');
-      fill.style.width = percentage + '%';
+      if (percentage) {
+        fill.style.width = percentage + '%';
+      }
     });
   }
 
+  // Check if section is already visible on page load
+  function checkIfVisible() {
+    const rect = skillsSection.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    return isVisible;
+  }
+
+  // Try IntersectionObserver first
   if ('IntersectionObserver' in window) {
     let animated = false;
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !animated) {
-          animate();
+          // Small delay to ensure DOM is ready
+          setTimeout(animate, 100);
           animated = true;
           obs.disconnect();
         }
       });
-    }, { threshold: 0.3 });
+    }, { 
+      threshold: 0.1, // Lower threshold for better mobile detection
+      rootMargin: '0px 0px -50px 0px' // Trigger slightly earlier
+    });
     observer.observe(skillsSection);
+    
+    // Fallback: if not triggered within 2 seconds, force animate
+    setTimeout(() => {
+      if (!animated) {
+        animate();
+        animated = true;
+        observer.disconnect();
+      }
+    }, 2000);
   } else {
     // Fallback for older browsers
     function onScroll() {
@@ -45,11 +68,23 @@ function animateSkillsProgress() {
       }
     }
     window.addEventListener('scroll', onScroll);
-    onScroll();
+    
+    // Check immediately on load
+    if (checkIfVisible()) {
+      setTimeout(animate, 100);
+    } else {
+      onScroll();
+    }
   }
 }
 
-document.addEventListener('DOMContentLoaded', animateSkillsProgress);
+// Ensure animation runs when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  animateSkillsProgress();
+  
+  // Additional fallback: run animation after a delay to ensure everything is loaded
+  setTimeout(animateSkillsProgress, 1000);
+});
 
 // Hamburger menu toggle
 const hamburger = document.getElementById('hamburger-menu');
