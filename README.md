@@ -26,10 +26,11 @@ Feel free to explore my projects, view screenshots, and check out the technologi
 
 ## Screenshots
 
-<img width="1470" alt="Screenshot 2025-07-08 at 09 40 15" src="https://github.com/user-attachments/assets/6586c1ed-d029-45dc-89f5-ce1acbe7eb4f" />
-<img width="1470" alt="Screenshot 2025-07-08 at 09 40 36" src="https://github.com/user-attachments/assets/af5e4741-2be4-4c2d-833d-d46941295afa" />
-<img width="1470" alt="Screenshot 2025-07-08 at 09 40 41" src="https://github.com/user-attachments/assets/dc0a60c4-c38b-48e4-bdec-df14ad9dc04e" />
-<img width="1470" alt="Screenshot 2025-07-08 at 09 40 45" src="https://github.com/user-attachments/assets/3995d065-e19b-4b7c-9ae1-2d67fafca592" />
+<img width="1470" height="956" alt="Screenshot 2025-08-25 at 10 20 56" src="https://github.com/user-attachments/assets/a6fc9281-7478-46ca-bafa-70ad2b9b3ed6" />
+<img width="1470" height="956" alt="Screenshot 2025-08-25 at 10 21 01" src="https://github.com/user-attachments/assets/9ad68ba2-f406-4c6e-8e03-e377dbc59a91" />
+<img width="1470" height="956" alt="Screenshot 2025-08-25 at 10 21 05" src="https://github.com/user-attachments/assets/68a46543-e272-4b4c-a4da-cc5cdeec554e" />
+<img width="1470" height="956" alt="Screenshot 2025-08-25 at 10 21 10" src="https://github.com/user-attachments/assets/8018d333-e1c4-41b4-a7eb-a2f67b387115" />
+<img width="1470" height="956" alt="Screenshot 2025-08-25 at 10 21 13" src="https://github.com/user-attachments/assets/d744bbb5-e281-46b2-a58b-8418144e3eaa" />
 
 
 ## Technical Skills & Experience
