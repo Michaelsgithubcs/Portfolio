@@ -565,7 +565,7 @@ footer .nav-links {
   background: #111;
   border-radius: 6px 0 0 6px;
   width: 0;
-  transition: width 2.5s cubic-bezier(0.4,0,0.2,1);
+  transition: width 3s cubic-bezier(0.4,0,0.2,1);
   min-width: 0;
   max-width: 100%;
 }
