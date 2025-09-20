@@ -565,7 +565,7 @@ footer .nav-links {
   background: #111;
   border-radius: 6px 0 0 6px;
   width: 0;
-  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  transition: width 2.5s cubic-bezier(0.4,0,0.2,1);
   min-width: 0;
   max-width: 100%;
 }
@@ -646,7 +646,7 @@ footer .nav-links {
     height: 12px; /* Slightly taller on mobile for better visibility */
   }
   .progress-fill {
-    transition: width 1.5s cubic-bezier(0.4,0,0.2,1); /* Slightly slower animation on mobile */
+    transition: width 3s cubic-bezier(0.4,0,0.2,1); /* Slower animation on mobile */
   }
 }
 
