@@ -9,7 +9,7 @@ function createTypingEffect() {
     if (index < text.length) {
       typingElement.textContent += text.charAt(index);
       index++;
-      setTimeout(type, 100); // Adjust speed here (100ms between characters)
+      setTimeout(type, 150); // Adjust speed here (150ms between characters)
     } else {
       // Keep cursor blinking after typing is complete
       cursor.style.animation = 'blink 1s infinite';
