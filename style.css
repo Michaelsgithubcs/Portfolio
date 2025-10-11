@@ -1657,3 +1657,33 @@ footer .nav-links {
 .progress-fill.c { background: #555555; }
 .progress-fill.mysql { background: #4479A1; }
 .progress-fill.plsql { background: #dad8d8; }
+
+/* Project type badges */
+.project-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-type-badge.android-app {
+  background: #3DDC84;
+  color: #1B5E20;
+  border: 1px solid #2E7D32;
+}
+
+.project-type-badge.web-app {
+  background: #E3F2FD;
+  color: #1565C0;
+  border: 1px solid #1976D2;
+}
+
+.project-type-badge svg {
+  flex-shrink: 0;
+}
