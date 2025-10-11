@@ -1,3 +1,31 @@
+// Typing effect for hero name
+function createTypingEffect() {
+  const text = "Mike Ndlovu";
+  const typingElement = document.getElementById('typing-text');
+  const cursor = document.getElementById('cursor');
+  let index = 0;
+
+  function type() {
+    if (index < text.length) {
+      typingElement.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 100); // Adjust speed here (100ms between characters)
+    } else {
+      // Keep cursor blinking after typing is complete
+      cursor.style.animation = 'blink 1s infinite';
+    }
+  }
+
+  // Start typing effect when page loads
+  setTimeout(() => {
+    typingElement.textContent = '';
+    type();
+  }, 500); // Delay before starting
+}
+
+// Initialize typing effect when DOM is loaded
+document.addEventListener('DOMContentLoaded', createTypingEffect);
+
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");

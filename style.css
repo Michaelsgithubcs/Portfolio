@@ -1084,6 +1084,18 @@ footer .nav-links {
   margin: 0 0 0.2rem 0;
 }
 
+/* Typing cursor animation */
+.typing-cursor {
+  animation: blink 1s infinite;
+  color: #111;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 .hero-role {
   font-size: 1.5rem;
   color: #444;
