@@ -1659,6 +1659,14 @@ footer .nav-links {
 .progress-fill.plsql { background: #dad8d8; }
 
 /* Project type badges */
+.project-badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  align-items: center;
+}
+
 .project-type-badge {
   display: inline-flex;
   align-items: center;
@@ -1667,7 +1675,6 @@ footer .nav-links {
   border-radius: 1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  margin-bottom: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -1686,4 +1693,72 @@ footer .nav-links {
 
 .project-type-badge svg {
   flex-shrink: 0;
+}
+
+/* Language tags */
+.project-badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  align-items: center;
+}
+
+.language-tag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* GitHub language colors */
+.language-tag.kotlin {
+  background: #A97BFF;
+  color: #fff;
+  border-color: #8b5cf6;
+}
+
+.language-tag.html {
+  background: #e34c26;
+  color: #fff;
+  border-color: #d63384;
+}
+
+.language-tag.css {
+  background: #563d7c;
+  color: #fff;
+  border-color: #495057;
+}
+
+.language-tag.javascript {
+  background: #f1e05a;
+  color: #212529;
+  border-color: #ffc107;
+}
+
+.language-tag.typescript {
+  background: #2b7489;
+  color: #fff;
+  border-color: #0dcaf0;
+}
+
+.language-tag.python {
+  background: #3572A5;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+.language-tag.powershell {
+  background: #012456;
+  color: #fff;
+  border-color: #0b5ed7;
+}
+
+.language-tag.shell {
+  background: #89e051;
+  color: #212529;
+  border-color: #198754;
 }
