@@ -1790,3 +1790,9 @@ footer .nav-links {
   color: #212529;
   border-color: #198754;
 }
+
+.language-tag.sql {
+  background: #e38c00;
+  color: #fff;
+  border-color: #fd7e14;
+}
