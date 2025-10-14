@@ -1,3 +1,68 @@
+// Mouse Parallax Effect
+function initParallaxEffect() {
+  const parallaxElements = document.querySelectorAll('.parallax-element');
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  // Track mouse movement
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 100;
+    mouseY = (e.clientY / window.innerHeight) * 100;
+  });
+
+  // Smooth animation loop
+  function animate() {
+    // Smooth interpolation for fluid movement
+    currentX += (mouseX - currentX) * 0.1;
+    currentY += (mouseY - currentY) * 0.1;
+
+    parallaxElements.forEach((element, index) => {
+      const speed = parseFloat(element.getAttribute('data-speed')) || 0.5;
+      const xOffset = (currentX - 50) * speed;
+      const yOffset = (currentY - 50) * speed;
+      
+      // Add some rotation for extra dynamism
+      const rotation = (currentX - 50) * 0.1;
+      
+      element.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg)`;
+      
+      // Add breathing effect
+      const breathe = Math.sin(Date.now() * 0.001 + index) * 0.1 + 1;
+      element.style.opacity = 0.1 + (Math.abs(xOffset + yOffset) * 0.001);
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  // Start animation only if user prefers motion
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animate();
+  }
+
+  // Add random floating animation for elements when mouse is idle
+  let idleTimer;
+  document.addEventListener('mousemove', () => {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      parallaxElements.forEach((element, index) => {
+        const randomX = (Math.random() - 0.5) * 20;
+        const randomY = (Math.random() - 0.5) * 20;
+        element.style.transition = 'transform 3s ease-in-out';
+        element.style.transform += ` translate(${randomX}px, ${randomY}px)`;
+        
+        setTimeout(() => {
+          element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 3000);
+      });
+    }, 2000); // Start floating after 2 seconds of no mouse movement
+  });
+}
+
+// Initialize parallax effect when DOM is loaded
+document.addEventListener('DOMContentLoaded', initParallaxEffect);
+
 // Typing effect for hero name
 function createTypingEffect() {
   const text = "Mike Ndlovu";
