@@ -83,7 +83,13 @@ p {
 /* Reduce parallax on mobile for performance */
 @media (max-width: 768px) {
   .parallax-element {
-    display: none;
+    opacity: 0.08;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+  }
+  
+  .parallax-element:hover {
+    opacity: 0.2;
+    transform: scale(1.1) !important;
   }
 }
 
