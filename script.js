@@ -1,10 +1,51 @@
 // Mouse Parallax Effect
 function initParallaxEffect() {
   const parallaxElements = document.querySelectorAll('.parallax-element');
+  const parallaxContainer = document.querySelector('.parallax-container');
   let mouseX = 0;
   let mouseY = 0;
   let currentX = 0;
   let currentY = 0;
+  
+  // Add variety to existing elements (#1, #2, #3)
+  const colors = ['color-blue', 'color-purple', 'color-green', 'color-orange', 'color-pink', 'color-cyan', 'color-red', 'color-yellow'];
+  const sizes = ['size-small', 'size-medium', 'size-large'];
+  
+  parallaxElements.forEach((element, index) => {
+    // Add random color
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    element.classList.add(randomColor);
+    
+    // Add random size
+    const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+    element.classList.add(randomSize);
+    
+    // Add pulse animation to 30% of elements (#5)
+    if (Math.random() > 0.7) {
+      element.classList.add('pulse');
+    }
+    
+    // Add float animation to 40% of elements (#6)
+    if (Math.random() > 0.6) {
+      element.classList.add('float');
+    }
+    
+    // Click/Tap effect (#7)
+    element.style.pointerEvents = 'auto';
+    element.addEventListener('click', function(e) {
+      const originalTransform = this.style.transform;
+      const originalOpacity = this.style.opacity;
+      
+      this.style.transform = 'scale(1.5) rotate(360deg)';
+      this.style.opacity = '0.6';
+      this.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      
+      setTimeout(() => {
+        this.style.transform = originalTransform;
+        this.style.opacity = originalOpacity;
+      }, 500);
+    });
+  });
 
   // Track mouse movement
   document.addEventListener('mousemove', (e) => {
@@ -62,6 +103,64 @@ function initParallaxEffect() {
 
 // Initialize parallax effect when DOM is loaded
 document.addEventListener('DOMContentLoaded', initParallaxEffect);
+
+// Mobile: Device Tilt Effect (#14)
+if (window.DeviceOrientationEvent && /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+  window.addEventListener('deviceorientation', (e) => {
+    const tiltX = e.gamma || 0; // Left-right tilt (-90 to 90)
+    const tiltY = e.beta || 0;  // Front-back tilt (-180 to 180)
+    
+    const parallaxElements = document.querySelectorAll('.parallax-element');
+    parallaxElements.forEach(element => {
+      const speed = parseFloat(element.getAttribute('data-speed')) || 0.8;
+      const moveX = tiltX * speed * 2;
+      const moveY = tiltY * speed * 2;
+      
+      element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+  });
+}
+
+// Mobile: Touch Drag Elements (#15)
+if ('ontouchstart' in window) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const parallaxElements = document.querySelectorAll('.parallax-element');
+    
+    parallaxElements.forEach(element => {
+      element.style.pointerEvents = 'auto';
+      
+      let startX, startY, initialX, initialY;
+      
+      element.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        
+        const transform = element.style.transform;
+        const match = transform.match(/translate\((.+?)px, (.+?)px\)/);
+        initialX = match ? parseFloat(match[1]) : 0;
+        initialY = match ? parseFloat(match[2]) : 0;
+        
+        element.style.opacity = '0.6';
+        element.style.transition = 'none';
+      });
+      
+      element.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+        
+        element.style.transform = `translate(${initialX + deltaX}px, ${initialY + deltaY}px)`;
+      });
+      
+      element.addEventListener('touchend', () => {
+        element.style.opacity = '';
+        element.style.transition = '';
+      });
+    });
+  });
+}
 
 // Typing effect for hero name
 function createTypingEffect() {

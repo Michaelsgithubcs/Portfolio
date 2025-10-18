@@ -57,10 +57,62 @@ p {
   filter: grayscale(1) brightness(0.7);
 }
 
-/* Hover effect for parallax elements */
+/* Hover effect for parallax elements - with rotation (#4) */
 .parallax-element:hover {
   opacity: 0.4;
-  transform: scale(1.2) !important;
+  transform: scale(1.2) rotate(15deg) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Color variations (#2) */
+.parallax-element.color-blue { color: #007bff; }
+.parallax-element.color-purple { color: #6f42c1; }
+.parallax-element.color-green { color: #28a745; }
+.parallax-element.color-orange { color: #fd7e14; }
+.parallax-element.color-pink { color: #e83e8c; }
+.parallax-element.color-cyan { color: #17a2b8; }
+.parallax-element.color-red { color: #dc3545; }
+.parallax-element.color-yellow { color: #ffc107; }
+
+/* Size variations (#3) */
+.parallax-element.size-small { 
+  font-size: clamp(1rem, 2vw, 2rem); 
+}
+.parallax-element.size-medium { 
+  font-size: clamp(1.5rem, 3vw, 3rem); 
+}
+.parallax-element.size-large { 
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem); 
+}
+
+/* Pulsing animation (#5) */
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.15; 
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 0.25; 
+  }
+}
+
+.parallax-element.pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Floating animation (#6) */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+}
+
+.parallax-element.float {
+  animation: float 6s ease-in-out infinite;
 }
 
 /* Different positions for elements */
@@ -89,7 +141,7 @@ p {
   
   .parallax-element:hover {
     opacity: 0.2;
-    transform: scale(1.1) !important;
+    transform: scale(1.1) rotate(10deg) !important;
   }
 }
 
