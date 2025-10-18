@@ -139,14 +139,26 @@ function animateSkillsProgress() {
 
   console.log(`Created ${rows.length} rows`);
 
-  // Track which rows are currently visible
+  // Track which rows are currently visible and scroll position
   const rowVisibility = {};
+  let lastScrollY = window.scrollY;
+  let isScrollingUp = false;
 
-  // Animate a specific row
-  function animateRow(rowBars, rowIndex) {
-    console.log(`🎬 Animating row ${rowIndex}`);
+  // Track scroll direction
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    isScrollingUp = currentScrollY < lastScrollY;
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+
+  // Animate a specific row (with direction awareness)
+  function animateRow(rowBars, rowIndex, scrollingUp = false) {
+    console.log(`🎬 Animating row ${rowIndex} (${scrollingUp ? '⬆️ scrolling up' : '⬇️ scrolling down'})`);
     
-    rowBars.forEach((fill, barIndex) => {
+    // If scrolling up, reverse the animation order within the row
+    const barsToAnimate = scrollingUp ? [...rowBars].reverse() : rowBars;
+    
+    barsToAnimate.forEach((fill, barIndex) => {
       const percentage = fill.dataset.targetPercentage;
       
       setTimeout(() => {
@@ -203,7 +215,7 @@ function animateSkillsProgress() {
           // Row is visible - animate it
           console.log(`✅ Row ${rowIndex} visible`);
           rowVisibility[rowIndex] = true;
-          animateRow(rowBars, rowIndex);
+          animateRow(rowBars, rowIndex, isScrollingUp);
         }
       });
     }, rowObserverOptions);
