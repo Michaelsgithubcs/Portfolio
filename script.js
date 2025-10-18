@@ -98,77 +98,111 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-// Animate skills progress bars on scroll
+// Animate skills progress bars by rows on scroll - simple animate once version
 function animateSkillsProgress() {
-  const skillsSection = document.querySelector('.skills-section');
+  const skillsSection = document.querySelector('.skills-section') || document.querySelector('#skills');
   if (!skillsSection) return;
+  
   const progressFills = skillsSection.querySelectorAll('.progress-fill');
+  if (progressFills.length === 0) return;
 
-  // Set all bars to 0 width initially
-  progressFills.forEach(fill => {
-    fill.style.width = '0';
+  console.log(`Found ${progressFills.length} progress bars`);
+
+  // Initialize all progress bars
+  progressFills.forEach((fill, index) => {
+    const percentage = fill.getAttribute('data-percentage') || '0';
+    
+    // Remove ALL inline styles and animations to prevent conflicts
+    fill.removeAttribute('style');
+    
+    // Disable any CSS animations
+    fill.style.animation = 'none';
+    fill.style.animationDelay = '0s';
+    
+    // Set initial state with clean transition
+    fill.style.width = '0%';
+    fill.style.transition = 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    
+    fill.dataset.targetPercentage = percentage;
+    fill.dataset.hasAnimated = 'false';
+    
+    console.log(`Bar ${index}: initialized at 0%, target ${percentage}%`);
   });
 
-  function animate() {
-    progressFills.forEach(fill => {
-      const percentage = fill.getAttribute('data-percentage');
-      if (percentage) {
-        fill.style.width = percentage + '%';
+  // Group bars into rows of 4
+  const rows = [];
+  for (let i = 0; i < progressFills.length; i += 4) {
+    const rowBars = Array.from(progressFills).slice(i, i + 4);
+    if (rowBars.length > 0) {
+      rows.push(rowBars);
+    }
+  }
+
+  console.log(`Created ${rows.length} rows`);
+
+  // Animate row once when visible
+  function animateRow(rowBars, rowIndex) {
+    // Check if all bars in row have been animated
+    const alreadyAnimated = rowBars.every(fill => fill.dataset.hasAnimated === 'true');
+    if (alreadyAnimated) {
+      console.log(`Row ${rowIndex} already animated, maintaining state`);
+      return;
+    }
+    
+    console.log(`Animating row ${rowIndex}`);
+    
+    rowBars.forEach((fill, barIndex) => {
+      if (fill.dataset.hasAnimated === 'false') {
+        const percentage = fill.dataset.targetPercentage;
+        
+        setTimeout(() => {
+          // Ensure no animations interfere
+          fill.style.animation = 'none';
+          fill.style.animationDelay = '0s';
+          
+          // Set the width
+          fill.style.width = percentage + '%';
+          fill.dataset.hasAnimated = 'true';
+          
+          console.log(`✓ Bar ${barIndex} in row ${rowIndex} animated to ${percentage}% (locked)`);
+          
+          // Lock the width after animation completes to prevent resets
+          setTimeout(() => {
+            fill.style.width = percentage + '%';
+            console.log(`✓ Bar ${barIndex} width locked at ${percentage}%`);
+          }, 1000);
+        }, barIndex * 100);
       }
     });
   }
 
-  // Check if section is already visible on page load
-  function checkIfVisible() {
-    const rect = skillsSection.getBoundingClientRect();
-    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-    return isVisible;
-  }
+  // IntersectionObserver - only animates, no reset
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -20% 0px',
+    threshold: 0.3
+  };
 
-  // Try IntersectionObserver first
-  if ('IntersectionObserver' in window) {
-    let animated = false;
-    const observer = new IntersectionObserver((entries, obs) => {
+  // Create observer for each row
+  rows.forEach((rowBars, rowIndex) => {
+    if (rowBars.length === 0) return;
+    
+    const triggerElement = rowBars[0].closest('div');
+    
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-          // Small delay to ensure DOM is ready
-          setTimeout(animate, 100);
-          animated = true;
-          obs.disconnect();
+        // Only animate when becoming visible, ignore when leaving
+        if (entry.isIntersecting) {
+          animateRow(rowBars, rowIndex);
         }
       });
-    }, { 
-      threshold: 0.1, // Lower threshold for better mobile detection
-      rootMargin: '0px 0px -50px 0px' // Trigger slightly earlier
-    });
-    observer.observe(skillsSection);
-    
-    // Fallback: if not triggered within 2 seconds, force animate
-    setTimeout(() => {
-      if (!animated) {
-        animate();
-        animated = true;
-        observer.disconnect();
-      }
-    }, 2000);
-  } else {
-    // Fallback for older browsers
-    function onScroll() {
-      const rect = skillsSection.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        animate();
-        window.removeEventListener('scroll', onScroll);
-      }
+    }, observerOptions);
+
+    if (triggerElement) {
+      observer.observe(triggerElement);
+      console.log(`Observer created for row ${rowIndex}`);
     }
-    window.addEventListener('scroll', onScroll);
-    
-    // Check immediately on load
-    if (checkIfVisible()) {
-      setTimeout(animate, 100);
-    } else {
-      onScroll();
-    }
-  }
+  });
 }
 
 // Ensure animation runs when DOM is ready
