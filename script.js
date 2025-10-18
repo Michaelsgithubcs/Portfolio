@@ -14,17 +14,17 @@ function initParallaxEffect() {
 
   // Smooth animation loop
   function animate() {
-    // Smooth interpolation for fluid movement
-    currentX += (mouseX - currentX) * 0.1;
-    currentY += (mouseY - currentY) * 0.1;
+    // Smooth interpolation for fluid movement - increased speed
+    currentX += (mouseX - currentX) * 0.25;
+    currentY += (mouseY - currentY) * 0.25;
 
     parallaxElements.forEach((element, index) => {
-      const speed = parseFloat(element.getAttribute('data-speed')) || 0.5;
+      const speed = parseFloat(element.getAttribute('data-speed')) || 0.8;
       const xOffset = (currentX - 50) * speed;
       const yOffset = (currentY - 50) * speed;
       
-      // Add some rotation for extra dynamism
-      const rotation = (currentX - 50) * 0.1;
+      // Add some rotation for extra dynamism - increased sensitivity
+      const rotation = (currentX - 50) * 0.15;
       
       element.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${rotation}deg)`;
       
