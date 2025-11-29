@@ -384,3 +384,21 @@ navLinksAll.forEach(link => {
     }
   });
 });
+
+// See More Projects Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const seeMoreBtn = document.getElementById('see-more-btn');
+  const hiddenProject = document.querySelector('.hidden-project');
+  
+  if (seeMoreBtn && hiddenProject) {
+    seeMoreBtn.addEventListener('click', function() {
+      if (hiddenProject.style.display === 'none' || hiddenProject.style.display === '') {
+        hiddenProject.style.display = 'block';
+        seeMoreBtn.textContent = 'See Less Projects';
+      } else {
+        hiddenProject.style.display = 'none';
+        seeMoreBtn.textContent = 'See More Projects';
+      }
+    });
+  }
+});
