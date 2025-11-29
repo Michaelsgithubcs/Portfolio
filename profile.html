@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://michaelsgithubcs.github.io/Portfolio/profile.html" />
+    <meta property="og:title" content="Mike Ndlovu - Profile" />
+    <meta property="og:description" content="Edit your profile information." />
+    <meta property="og:image" content="https://michaelsgithubcs.github.io/Portfolio/assets/Thumbnail.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:site_name" content="Mike Ndlovu Portfolio" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://michaelsgithubcs.github.io/Portfolio/profile.html" />
+    <meta property="twitter:title" content="Mike Ndlovu - Profile" />
+    <meta property="twitter:description" content="Edit your profile information." />
+    <meta property="twitter:image" content="https://michaelsgithubcs.github.io/Portfolio/assets/Thumbnail.jpg" />
+    <meta property="twitter:image:alt" content="Mike Ndlovu - Profile" />
+    
+    <title>Mike Ndlovu - Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <!-- Fixed Header Navigation Start -->
+    <header id="main-header" class="main-header">
+      <div class="header-container">
+        <div class="logo">Mike Ndlovu</div>
+        <nav class="nav-menu">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger" id="hamburger-menu" aria-label="Open menu" tabindex="0">
+          <img src="assets/menu.png" alt="Menu" style="width:32px;height:32px;object-fit:contain;" />
+        </div>
+      </div>
+    </header>
+    <!-- Fixed Header Navigation End -->
+
+    <!-- Profile Section Start -->
+    <section id="profile" class="profile-section">
+      <p class="section__text__p1">Manage Your</p>
+      <h1 class="title">Profile</h1>
+      <div class="profile-container">
+        <div class="profile-card">
+          <div class="profile-picture-section">
+            <img src="./assets/profile-pic.png" alt="Profile Picture" class="profile-img" id="profile-img" />
+            <button class="btn btn-color-2 change-photo-btn" onclick="document.getElementById('photo-input').click()">Change Photo</button>
+            <input type="file" id="photo-input" accept="image/*" style="display: none;" onchange="previewImage(event)" />
+          </div>
+          <form class="profile-form" id="profile-form">
+            <div class="form-group">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" name="full-name" value="Mike Ndlovu" required />
+            </div>
+            <div class="form-group">
+              <label for="phone-number">Phone Number</label>
+              <input type="tel" id="phone-number" name="phone-number" value="+27 123 456 7890" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" value="mikendlovumx@gmail.com" required />
+            </div>
+            <div class="form-group">
+              <label for="student-number">Student Number</label>
+              <input type="text" id="student-number" name="student-number" value="123456789" required />
+            </div>
+            <button type="submit" class="btn btn-color-1 save-btn">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Profile Section End -->
+
+    <footer class="footer-black">
+      <div class="footer-content" id="footer-contact">
+        <div class="footer-contact">
+          <a href="mailto:mikendlovumx@gmail.com" class="footer-email">
+            <img src="./assets/email.png" alt="Email icon" class="footer-icon" />
+            mikendlovumx@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/michael-ndlovu-23246b2b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="footer-linkedin">
+            <img src="./assets/linkedin.png" alt="LinkedIn icon" class="footer-icon" />
+            LinkedIn
+          </a>
+        </div>
+        <p class="footer-copyright">Copyright &#169; 2025 Mike Ndlovu. All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      // Profile image preview
+      function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            document.getElementById('profile-img').src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // Form submission (placeholder)
+      document.getElementById('profile-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Changes saved! (This is a placeholder)');
+      });
+
+      // Always scroll to top on reload (unless navigating via history)
+      if (performance && performance.navigation && performance.navigation.type === 1) {
+        window.scrollTo(0, 0);
+      } else if (window.location.hash) {
+        window.scrollTo(0, 0);
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    </script>
+  </body>
+</html>
