@@ -446,7 +446,10 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
       }, 400);
     } else {
       // Snap back to open position smoothly
+      navLinks.style.transform = ''; // Clear any inline transform first
       navLinks.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      // Force reflow to ensure transition applies
+      navLinks.offsetHeight;
       navLinks.style.transform = 'translateY(0)';
       navLinks.style.opacity = '1';
     }
