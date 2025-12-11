@@ -1219,6 +1219,25 @@ body.menu-open {
     text-align: center;
     padding: 0.5rem 0;
     margin: 0.5rem 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  header .header-container .nav-menu .nav-links li.menu-sections-header::before,
+  header .header-container .nav-menu .nav-links li.menu-sections-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  header .header-container .nav-menu .nav-links li.menu-sections-header::before {
+    margin-right: 1rem;
+  }
+  
+  header .header-container .nav-menu .nav-links li.menu-sections-header::after {
+    margin-left: 1rem;
   }
   
   header .header-container .nav-menu .nav-links li.menu-home a {

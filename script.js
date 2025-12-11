@@ -416,18 +416,15 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
     
     // Close if dragged more than 50px down
     if (deltaY > 50) {
-      // Animate the menu sliding down smoothly
-      navLinks.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease';
-      navLinks.style.transform = 'translateY(100%)';
-      navLinks.style.opacity = '0';
+      // Immediately remove open state to start closing animation
+      isMenuOpen = false;
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      menuOverlay.classList.remove('active');
+      document.body.classList.remove('menu-open');
       
-      // Clean up after animation completes
+      // Clean up styles after animation completes
       setTimeout(() => {
-        isMenuOpen = false;
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-        menuOverlay.classList.remove('active');
-        document.body.classList.remove('menu-open');
         navLinks.style.transform = '';
         navLinks.style.opacity = '';
         navLinks.style.transition = '';
@@ -443,9 +440,10 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
         }, 150);
       }, 400);
     } else {
-      // Snap back to open position
+      // Snap back to open position smoothly
       navLinks.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       navLinks.style.transform = 'translateY(0)';
+      navLinks.style.opacity = '1';
     }
   });
   
