@@ -332,10 +332,16 @@ section {
 
 .btn {
   font-weight: 600;
-  transition: all 300ms ease;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .btn-color-1,
@@ -350,20 +356,22 @@ section {
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   color: white;
 }
 
 .btn-color-1:hover {
-  background: rgb(0, 0, 0);
+  background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
 }
 
 .btn-color-2 {
-  background: none;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
 }
 
 .btn-color-2:hover {
-  border: rgb(255, 255, 255) 0.1rem solid;
+  background: rgba(240, 240, 245, 0.95);
+  border: rgb(163, 163, 163) 0.1rem solid;
 }
 
 .btn-container {
@@ -864,12 +872,13 @@ footer .nav-links {
 }
 
 .about-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   border-radius: 1.25rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   padding: 2.5rem 2rem;
   border: 1.5px solid #e0e0e0;
-  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -878,9 +887,9 @@ footer .nav-links {
 }
 
 .about-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.13);
-  border-color: #e0e0e0;
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  border-color: rgba(124, 124, 224, 0.3);
 }
 
 .about-icon {
@@ -1171,9 +1180,16 @@ footer .nav-links {
   height: 400px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.15);
   z-index: 2;
   background: #fff;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.hero-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 64px rgba(0,0,0,0.2);
 }
 
 .decorative-circles {
@@ -1374,20 +1390,40 @@ footer .nav-links {
 }
 
 #projects .about-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   border-radius: 1rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.22s cubic-bezier(0.4,0,0.2,1), box-shadow 0.22s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   position: relative;
   z-index: 10;
+  border: 1.5px solid #e0e0e0;
+  overflow: hidden;
 }
+
+#projects .about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+#projects .about-card:hover::before {
+  left: 100%;
+}
+
 #projects .about-card:hover {
-  transform: scale(1.035);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.13);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  border-color: rgba(124, 124, 224, 0.3);
 }
 
 .project-img {
@@ -1396,6 +1432,13 @@ footer .nav-links {
   height: 180px;
   object-fit: cover;
   margin-bottom: 1rem;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+#projects .about-card:hover .project-img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .project-title {
@@ -1681,12 +1724,13 @@ footer .nav-links {
   }
 }
 .experience-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   border-radius: 1.25rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   padding: 2.5rem 2rem;
   border: 1.5px solid #e0e0e0;
-  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1695,9 +1739,9 @@ footer .nav-links {
   z-index: 10;
 }
 .experience-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.13);
-  border-color: #e0e0e0;
+  transform: translateY(-10px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  border-color: rgba(124, 124, 224, 0.3);
 }
 .experience-card-header {
   display: flex;
