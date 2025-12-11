@@ -408,31 +408,36 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
   
   navLinks.addEventListener('touchend', () => {
     if (!isDragging) return;
-    
+
     isDragging = false;
     navLinks.classList.remove('dragging');
-    
+
     const deltaY = currentY - startY;
-    
+
     // Close if dragged more than 50px down
     if (deltaY > 50) {
-      // Immediately remove open state to start closing animation
+      // Start the closing animation
+      navLinks.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease';
+      navLinks.style.transform = 'translateY(100%)';
+      navLinks.style.opacity = '0';
+
+      // Remove classes immediately to prevent any state conflicts
       isMenuOpen = false;
       hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
       menuOverlay.classList.remove('active');
       document.body.classList.remove('menu-open');
-      
-      // Clean up styles after animation completes
+
+      // Clean up after animation completes
       setTimeout(() => {
+        navLinks.classList.remove('open');
         navLinks.style.transform = '';
         navLinks.style.opacity = '';
         navLinks.style.transition = '';
-        
+
         // Reset icon
         hamburgerIcon.style.opacity = '0';
         hamburgerIcon.style.transform = 'rotate(90deg) scale(0.8)';
-        
+
         setTimeout(() => {
           hamburgerIcon.src = icon1;
           hamburgerIcon.style.opacity = '1';
