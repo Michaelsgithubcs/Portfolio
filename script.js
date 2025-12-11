@@ -340,20 +340,31 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(animateSkillsProgress, 1000);
 });
 
-// Hamburger menu toggle with icon switching
+// Hamburger menu toggle with icon switching and drag-to-close
 const hamburger = document.getElementById('hamburger-menu');
 const hamburgerIcon = document.getElementById('hamburger-icon');
 const navLinks = document.querySelector('.nav-links');
+const menuOverlay = document.getElementById('menu-overlay');
 
 let isMenuOpen = false;
 const icon1 = 'assets/hamburger.png';
 const icon2 = 'assets/hamburger2.png';
 
-if (hamburger && navLinks && hamburgerIcon) {
+// Drag to close variables
+let startY = 0;
+let currentY = 0;
+let isDragging = false;
+let initialTransform = 0;
+
+if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
   hamburger.addEventListener('click', () => {
     isMenuOpen = !isMenuOpen;
     hamburger.classList.toggle('open');
     navLinks.classList.toggle('open');
+    menuOverlay.classList.toggle('active');
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     
     // Smooth icon transition
     hamburgerIcon.style.opacity = '0';
@@ -366,24 +377,80 @@ if (hamburger && navLinks && hamburgerIcon) {
     }, 150);
   });
   
+  // Touch events for drag-to-close
+  navLinks.addEventListener('touchstart', (e) => {
+    if (!navLinks.classList.contains('open')) return;
+    
+    // Only start drag from the top area (drag handle)
+    const touch = e.touches[0];
+    const rect = navLinks.getBoundingClientRect();
+    const touchY = touch.clientY - rect.top;
+    
+    if (touchY < 60) { // Top 60px is drag area
+      isDragging = true;
+      startY = touch.clientY;
+      currentY = touch.clientY;
+      navLinks.classList.add('dragging');
+      navLinks.style.transition = 'none';
+    }
+  }, { passive: true });
+  
+  navLinks.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    currentY = e.touches[0].clientY;
+    const deltaY = currentY - startY;
+    
+    // Only allow dragging down
+    if (deltaY > 0) {
+      navLinks.style.transform = `translateY(${deltaY}px)`;
+    }
+  }, { passive: true });
+  
+  navLinks.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    
+    isDragging = false;
+    navLinks.classList.remove('dragging');
+    navLinks.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    
+    const deltaY = currentY - startY;
+    
+    // Close if dragged more than 100px down
+    if (deltaY > 100) {
+      closeMenu();
+    } else {
+      // Snap back
+      navLinks.style.transform = 'translateY(0)';
+    }
+  });
+  
+  // Close menu when clicking overlay
+  menuOverlay.addEventListener('click', closeMenu);
+  
   // Close menu on link click (mobile)
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      isMenuOpen = false;
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-      
-      // Reset icon
-      hamburgerIcon.style.opacity = '0';
-      hamburgerIcon.style.transform = 'rotate(90deg) scale(0.8)';
-      
-      setTimeout(() => {
-        hamburgerIcon.src = icon1;
-        hamburgerIcon.style.opacity = '1';
-        hamburgerIcon.style.transform = 'rotate(0deg) scale(1)';
-      }, 150);
-    });
+    link.addEventListener('click', closeMenu);
   });
+  
+  function closeMenu() {
+    isMenuOpen = false;
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    navLinks.style.transform = '';
+    
+    // Reset icon
+    hamburgerIcon.style.opacity = '0';
+    hamburgerIcon.style.transform = 'rotate(90deg) scale(0.8)';
+    
+    setTimeout(() => {
+      hamburgerIcon.src = icon1;
+      hamburgerIcon.style.opacity = '1';
+      hamburgerIcon.style.transform = 'rotate(0deg) scale(1)';
+    }, 150);
+  }
 }
 
 // Header background on scroll
