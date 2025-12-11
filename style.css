@@ -1147,6 +1147,7 @@ body.menu-open {
     height: 70vh;
     overflow-y: auto;
     touch-action: pan-y;
+    justify-content: flex-end;
   }
   
   header .header-container .nav-menu .nav-links::before {
@@ -1207,6 +1208,23 @@ body.menu-open {
   
   header .header-container .nav-menu .nav-links li:first-child {
     margin-top: 1rem;
+  }
+  
+  header .header-container .nav-menu .nav-links li.menu-sections-header {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+  }
+  
+  header .header-container .nav-menu .nav-links li.menu-home a {
+    background: linear-gradient(135deg, rgba(124, 124, 224, 0.15), rgba(124, 124, 224, 0.05));
+    border: 1.5px solid rgba(124, 124, 224, 0.3);
+    font-weight: 600;
   }
   
   header .header-container .nav-menu .nav-links li a {

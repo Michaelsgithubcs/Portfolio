@@ -401,9 +401,10 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
     
     // Only allow dragging down
     if (deltaY > 0) {
+      e.preventDefault(); // Prevent pull-to-refresh
       navLinks.style.transform = `translateY(${deltaY}px)`;
     }
-  }, { passive: true });
+  }, { passive: false });
   
   navLinks.addEventListener('touchend', () => {
     if (!isDragging) return;
@@ -428,7 +429,28 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
   
   // Close menu on link click (mobile)
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', (e) => {
+      // Handle smooth scroll for hash links
+      if (link.getAttribute('href').startsWith('#')) {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        closeMenu();
+        
+        // Scroll to target after menu closes
+        setTimeout(() => {
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            // For #hero or if element not found, scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }, 300);
+      } else {
+        closeMenu();
+      }
+    });
   });
   
   function closeMenu() {
