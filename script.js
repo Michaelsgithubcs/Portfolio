@@ -411,15 +411,40 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
     
     isDragging = false;
     navLinks.classList.remove('dragging');
-    navLinks.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     
     const deltaY = currentY - startY;
     
     // Close if dragged more than 50px down
     if (deltaY > 50) {
-      closeMenu();
+      // Animate the menu sliding down smoothly
+      navLinks.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease';
+      navLinks.style.transform = 'translateY(100%)';
+      navLinks.style.opacity = '0';
+      
+      // Clean up after animation completes
+      setTimeout(() => {
+        isMenuOpen = false;
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+        menuOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        navLinks.style.transform = '';
+        navLinks.style.opacity = '';
+        navLinks.style.transition = '';
+        
+        // Reset icon
+        hamburgerIcon.style.opacity = '0';
+        hamburgerIcon.style.transform = 'rotate(90deg) scale(0.8)';
+        
+        setTimeout(() => {
+          hamburgerIcon.src = icon1;
+          hamburgerIcon.style.opacity = '1';
+          hamburgerIcon.style.transform = 'rotate(0deg) scale(1)';
+        }, 150);
+      }, 400);
     } else {
-      // Snap back
+      // Snap back to open position
+      navLinks.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       navLinks.style.transform = 'translateY(0)';
     }
   });
