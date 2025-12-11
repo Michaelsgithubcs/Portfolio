@@ -364,7 +364,11 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
     menuOverlay.classList.toggle('active');
     
     // Prevent body scroll when menu is open
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    if (isMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
     
     // Smooth icon transition
     hamburgerIcon.style.opacity = '0';
@@ -381,18 +385,12 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
   navLinks.addEventListener('touchstart', (e) => {
     if (!navLinks.classList.contains('open')) return;
     
-    // Only start drag from the top area (drag handle)
     const touch = e.touches[0];
-    const rect = navLinks.getBoundingClientRect();
-    const touchY = touch.clientY - rect.top;
-    
-    if (touchY < 60) { // Top 60px is drag area
-      isDragging = true;
-      startY = touch.clientY;
-      currentY = touch.clientY;
-      navLinks.classList.add('dragging');
-      navLinks.style.transition = 'none';
-    }
+    isDragging = true;
+    startY = touch.clientY;
+    currentY = touch.clientY;
+    navLinks.classList.add('dragging');
+    navLinks.style.transition = 'none';
   }, { passive: true });
   
   navLinks.addEventListener('touchmove', (e) => {
@@ -412,12 +410,12 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
     
     isDragging = false;
     navLinks.classList.remove('dragging');
-    navLinks.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    navLinks.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     
     const deltaY = currentY - startY;
     
-    // Close if dragged more than 100px down
-    if (deltaY > 100) {
+    // Close if dragged more than 50px down
+    if (deltaY > 50) {
       closeMenu();
     } else {
       // Snap back
@@ -438,7 +436,7 @@ if (hamburger && navLinks && hamburgerIcon && menuOverlay) {
     hamburger.classList.remove('open');
     navLinks.classList.remove('open');
     menuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
     navLinks.style.transform = '';
     
     // Reset icon

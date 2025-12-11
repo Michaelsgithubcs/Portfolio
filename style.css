@@ -1113,9 +1113,16 @@ footer .nav-links {
   height: 1.5rem !important;
 }
 
+/* Prevent background scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 900px) {
   header .header-container .nav-menu .nav-links {
-    display: none !important;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -1125,7 +1132,7 @@ footer .nav-links {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 1.5rem 1.5rem 2rem 1.5rem;
+    padding: 1.5rem 1rem 2rem 1rem;
     gap: 0;
     margin: 0;
     box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
@@ -1133,9 +1140,11 @@ footer .nav-links {
     border-radius: 1.5rem 1.5rem 0 0;
     transform: translateY(100%);
     opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease;
+    will-change: transform, opacity;
     z-index: 999;
-    max-height: 85vh;
+    height: 70vh;
     overflow-y: auto;
     touch-action: pan-y;
   }
@@ -1143,11 +1152,11 @@ footer .nav-links {
   header .header-container .nav-menu .nav-links::before {
     content: '';
     position: absolute;
-    top: 0.8rem;
+    top: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 48px;
-    height: 5px;
+    width: 40px;
+    height: 4px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     cursor: grab;
@@ -1161,6 +1170,8 @@ footer .nav-links {
     display: flex !important;
     transform: translateY(0);
     opacity: 1;
+    pointer-events: auto;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease;
   }
   
   header .header-container .nav-menu .nav-links li {
@@ -1195,25 +1206,26 @@ footer .nav-links {
   }
   
   header .header-container .nav-menu .nav-links li:first-child {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
   
   header .header-container .nav-menu .nav-links li a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 1.5rem;
-    font-size: 1.1rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: #222;
     background: rgba(255, 255, 255, 0.5);
-    border-radius: 1rem;
-    margin-bottom: 0.8rem;
+    border-radius: 0.7rem;
+    margin-bottom: 0.5rem;
     border: 1px solid rgba(224, 224, 224, 0.6);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     position: relative;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
   
   header .header-container .nav-menu .nav-links li a::before {
