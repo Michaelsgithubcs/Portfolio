@@ -1001,13 +1001,19 @@ footer .nav-links {
   left: 0;
   width: 100%;
   height: 4rem;
-  padding: 0 2rem;
+  padding: 0;
   z-index: 1000;
   background: transparent;
   transition: background 0.3s, box-shadow 0.3s;
   box-shadow: none;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 900px) {
+  .main-header {
+    padding: 0;
+  }
 }
 
 .main-header.scrolled {
@@ -1023,6 +1029,13 @@ footer .nav-links {
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .header-container {
+    padding: 0 1rem;
+  }
 }
 
 .logo {
@@ -1062,6 +1075,22 @@ footer .nav-links {
 
 .hamburger {
   display: none;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 1001;
+  margin-left: auto;
+  margin-right: -0.3rem;
+}
+
+.hamburger img {
+  transition: opacity 0.3s ease-in-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  display: block;
+  width: auto !important;
+  height: 1.5rem !important;
 }
 
 @media (max-width: 900px) {
@@ -1073,6 +1102,8 @@ footer .nav-links {
   }
   header .header-container .hamburger {
     display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }
 

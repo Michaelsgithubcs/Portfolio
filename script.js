@@ -340,19 +340,48 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(animateSkillsProgress, 1000);
 });
 
-// Hamburger menu toggle
+// Hamburger menu toggle with icon switching
 const hamburger = document.getElementById('hamburger-menu');
+const hamburgerIcon = document.getElementById('hamburger-icon');
 const navLinks = document.querySelector('.nav-links');
-if (hamburger && navLinks) {
+
+let isMenuOpen = false;
+const icon1 = 'assets/hamburger.png';
+const icon2 = 'assets/hamburger2.png';
+
+if (hamburger && navLinks && hamburgerIcon) {
   hamburger.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
     hamburger.classList.toggle('open');
     navLinks.classList.toggle('open');
+    
+    // Smooth icon transition
+    hamburgerIcon.style.opacity = '0';
+    hamburgerIcon.style.transform = 'rotate(90deg) scale(0.8)';
+    
+    setTimeout(() => {
+      hamburgerIcon.src = isMenuOpen ? icon2 : icon1;
+      hamburgerIcon.style.opacity = '1';
+      hamburgerIcon.style.transform = 'rotate(0deg) scale(1)';
+    }, 150);
   });
+  
   // Close menu on link click (mobile)
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
+      isMenuOpen = false;
       hamburger.classList.remove('open');
       navLinks.classList.remove('open');
+      
+      // Reset icon
+      hamburgerIcon.style.opacity = '0';
+      hamburgerIcon.style.transform = 'rotate(90deg) scale(0.8)';
+      
+      setTimeout(() => {
+        hamburgerIcon.src = icon1;
+        hamburgerIcon.style.opacity = '1';
+        hamburgerIcon.style.transform = 'rotate(0deg) scale(1)';
+      }, 150);
     });
   });
 }
