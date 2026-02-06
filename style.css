@@ -2282,6 +2282,33 @@ html.menu-open {
   border-color: #fd7e14;
 }
 
+/* Tag animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.project-type-badge,
+.language-tag {
+  animation: float 3s ease-in-out infinite;
+}
+
+.project-type-badge:nth-child(1) { animation-delay: 0s; }
+.project-type-badge:nth-child(2) { animation-delay: 0.5s; }
+.project-type-badge:nth-child(3) { animation-delay: 1s; }
+.project-type-badge:nth-child(4) { animation-delay: 1.5s; }
+.project-type-badge:nth-child(5) { animation-delay: 2s; }
+.project-type-badge:nth-child(6) { animation-delay: 2.5s; }
+
+.language-tag:nth-child(1) { animation-delay: 0s; }
+.language-tag:nth-child(2) { animation-delay: 0.3s; }
+.language-tag:nth-child(3) { animation-delay: 0.6s; }
+.language-tag:nth-child(4) { animation-delay: 0.9s; }
+.language-tag:nth-child(5) { animation-delay: 1.2s; }
+.language-tag:nth-child(6) { animation-delay: 1.5s; }
+.language-tag:nth-child(7) { animation-delay: 1.8s; }
+.language-tag:nth-child(8) { animation-delay: 2.1s; }
+
 /* PROFILE SECTION */
 .profile-section {
   padding: 4rem 2rem;
