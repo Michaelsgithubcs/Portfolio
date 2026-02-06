@@ -476,11 +476,9 @@ section {
 
 .article-container {
   display: flex;
-  text-align: initial;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 2.5rem;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }
 
 article {
@@ -1398,6 +1396,9 @@ html.menu-open {
     height: auto !important;
     margin: 0 auto 1rem auto !important;
     display: block !important;
+  }
+  .article-container {
+    height: auto !important;
   }
 }
 
