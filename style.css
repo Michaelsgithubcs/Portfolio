@@ -514,6 +514,11 @@ article .icon {
 .project-title {
   margin: 1rem;
   color: black;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .project-btn {
@@ -1400,6 +1405,9 @@ html.menu-open {
   .article-container {
     height: auto !important;
   }
+  .project-badges-container {
+    min-height: auto !important;
+  }
 }
 
 .hero-section {
@@ -1631,6 +1639,14 @@ html.menu-open {
   margin: 2rem auto 0 auto;
 }
 
+#projects .about-card {
+  min-height: 420px;
+}
+
+#projects .btn-container {
+  margin-top: auto;
+}
+
 .projects-section img.icon.arrow {
   display: none;
 }
@@ -1649,6 +1665,9 @@ html.menu-open {
     gap: 1.2rem;
     row-gap: 1.2rem;
     margin: 1.2rem auto 1.2rem auto;
+  }
+  #projects .about-card {
+    min-height: auto;
   }
 }
 
@@ -2154,7 +2173,9 @@ html.menu-open {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.8rem;
-  align-items: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  min-height: 6.5rem;
 }
 
 .project-type-badge {
@@ -2191,7 +2212,9 @@ html.menu-open {
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-bottom: 0.8rem;
-  align-items: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  min-height: 6.5rem;
 }
 
 .language-tag {
