@@ -1779,6 +1779,11 @@ html.menu-open {
   stroke: #fff;
 }
 
+#see-more-btn {
+  background: #111 !important;
+  color: #fff !important;
+}
+
 .btn-color-2.project-btn svg {
   stroke: #222;
 }
