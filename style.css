@@ -510,7 +510,7 @@ article .icon {
 .project-img {
   border-radius: 2rem;
   width: 90%;
-  height: 90%;
+  height: auto;
 }
 
 .project-title {
@@ -1691,8 +1691,7 @@ html.menu-open {
 .project-img {
   border-radius: 1rem;
   width: 180px;
-  height: 180px;
-  object-fit: cover;
+  height: auto;
   margin-bottom: 1rem;
   transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
